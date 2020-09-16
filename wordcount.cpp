@@ -24,7 +24,7 @@ using namespace std;
  
 // ASCII:
 // numbers are from 48-71
-// letters are from 65-132, 141-172
+// letters are from 65-90, 97-122
 // space is 32
 // apostrophe is 39, 
 // \n is 10?
@@ -38,6 +38,8 @@ int main(int argc, char** argv) {
   int longest_running_word = 0;
   
   int largest_num_vowels = 0;
+  int largest_running_vowels = 0;
+  int vowels[] = { 65, 69, 73, 79, 85, 97, 101, 105, 111, 117 };
 
   while(input != 10) {
     input = cin.get();
@@ -46,11 +48,26 @@ int main(int argc, char** argv) {
       if (longest_running_word > longest_word) {
         longest_word = longest_running_word;
       }
+      if (largest_running_vowels > largest_num_vowels) {
+        largest_num_vowels = largest_running_vowels;
+      }
       longest_running_word = 0;
+      largest_running_vowels = 0;
     }
-    if (input >= 65 && input <= 132) { // letter cap
+
+    if (input >= 65 && input <= 90) { // letter cap
+      for (int i = 0; i <= 4; i++) {
+        if (input == vowels[i]) {
+          largest_running_vowels++;
+        }
+      }
       longest_running_word++;
-    } else if (input >= 141 && input <= 172) { // letter low
+    } else if (input >= 97 && input <= 122) { // letter low
+      for (int j = 5; j <= 9; j++) {
+        if (input == vowels[j]) {
+          largest_running_vowels++;
+        }
+      }
       longest_running_word++;
     } else if (input == 39) { // apostrophe
       longest_running_word++;
@@ -60,6 +77,9 @@ int main(int argc, char** argv) {
   // counts last "word"
   if (longest_running_word > longest_word) {
     longest_word = longest_running_word;
+  }
+  if (largest_running_vowels > largest_num_vowels) {
+    largest_num_vowels = largest_running_vowels;
   }
   word_count++;
 
