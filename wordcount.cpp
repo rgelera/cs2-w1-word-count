@@ -44,7 +44,9 @@ int main(int argc, char** argv) {
   while(input != 10) {
     input = cin.get();
     if (input == 32) {  // if space
-      word_count++;
+      if (longest_running_word != 0) { // make sure to start if started a word (accounts for multiple spaces)
+        word_count++;
+      }
       if (longest_running_word > longest_word) {
         longest_word = longest_running_word;
       }
@@ -55,21 +57,21 @@ int main(int argc, char** argv) {
       largest_running_vowels = 0;
     }
 
-    if (input >= 65 && input <= 90) { // letter cap
+    if (input >= 65 && input <= 90) { // letter uppercase
       for (int i = 0; i <= 4; i++) {
         if (input == vowels[i]) {
           largest_running_vowels++;
         }
       }
       longest_running_word++;
-    } else if (input >= 97 && input <= 122) { // letter low
+    } else if (input >= 97 && input <= 122) { // letter lowercase
       for (int j = 5; j <= 9; j++) {
         if (input == vowels[j]) {
           largest_running_vowels++;
         }
       }
       longest_running_word++;
-    } else if (input == 39) { // apostrophe
+    } else if (input == 39) { // apostrophe. only punctuation im counting as part of a word
       longest_running_word++;
     }
   }
@@ -81,7 +83,9 @@ int main(int argc, char** argv) {
   if (largest_running_vowels > largest_num_vowels) {
     largest_num_vowels = largest_running_vowels;
   }
-  word_count++;
+  if (longest_running_word != 0) { // accounts for if enter pressed right away
+    word_count++;
+  }
 
   cout << "Number of words: " << word_count << "\n";
 

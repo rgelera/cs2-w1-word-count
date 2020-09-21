@@ -1,0 +1,38 @@
+input >>
+The quick brown fox jumps over the lazy dog.
+
+output << 
+Number of words: 9
+Number of letters in longest word: 5
+Largest vowels of letters in one word: 2
+
+input >>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis feugiat augue, nec mollis diam interdum nec. Proin maximus tortor nec neque dignissim sollicitudin. Donec.
+
+output << 
+Number of words: 25
+Number of letters in longest word: 12
+Largest vowels of letters in one word: 5
+
+input >>
+one
+
+output <<
+Number of words: 1
+Number of letters in longest word: 3
+Largest vowels of letters in one word: 2
+
+input >>
+Testing multiple  spaces in a sentence.
+
+output <<
+Number of words: 6
+Number of letters in longest word: 8
+Largest vowels of letters in one word: 3
+
+input >>
+
+output <<
+Number of words: 0
+Number of letters in longest word: 0
+Largest vowels of letters in one word: 0
